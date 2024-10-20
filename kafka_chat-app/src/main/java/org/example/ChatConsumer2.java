@@ -6,11 +6,10 @@ import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 
 import java.time.Duration;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Properties;
 
-public class ChatConsumer {
+public class ChatConsumer2 {
 
     private static final String TOPIC = "chat-topic";
 
@@ -22,8 +21,8 @@ public class ChatConsumer {
         prop.put(ConsumerConfig.GROUP_ID_CONFIG, "chat-consumer-group");
         prop.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
         prop.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
-        //manually checking and updating the offset to make more reliable and less duplication
-        prop.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "false");
+
+
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(prop);
         consumer.subscribe(Collections.singletonList(TOPIC));
 
@@ -33,9 +32,6 @@ public class ChatConsumer {
              ConsumerRecords<String, String> consumerRecords  = consumer.poll(Duration.ofMillis(100));
              for( ConsumerRecord<String, String > record : consumerRecords){
                  System.out.println("Received: "+ record.value());
-
-                 //once the message is read then commit
-                 consumer.commitSync();
              }
         }
 

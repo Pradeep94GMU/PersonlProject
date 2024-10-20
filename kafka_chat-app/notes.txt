@@ -38,3 +38,10 @@ always restart the kafka broker once making any changes
  A General Rule of Thumb:
  If you’re expecting high throughput, start with a few more partitions (like 3–6) and test. If you’re doing a small-scale application, starting with 2–4 partitions is usually sufficient.
  There’s no perfect formula. It depends on your application's load and the number of consumers
+
+
+Key Points to Remember:
+Offsets are per partition: Each partition maintains its own offset for the consumer group.
+Consumer Groups: Each consumer group tracks offsets separately, allowing multiple groups to read from the same topic without affecting each other.
+Reprocessing: If a consumer fails before committing an offset, it will re-read the uncommitted messages upon restart.
+Duplicate Messages: Manual management can help avoid duplicates by ensuring offsets are only committed after successful processing.

@@ -39,10 +39,10 @@ public class ChatProducer {
                 break;
             }
             //key is responsible for assigning to different partition based on the key
-            String key = "user-"+(int)(Math.random() * 3);
+            String key = "user-"+(int)(Math.random() * 6);
             //take the message and use make a obj of ProducerRecord to send message to topic
             producer.send(new ProducerRecord<>(TOPIC, key, message));
-            System.out.println("message send: "+message);
+            System.out.println("message send: "+message +" to "+ key);
 
         }
 
