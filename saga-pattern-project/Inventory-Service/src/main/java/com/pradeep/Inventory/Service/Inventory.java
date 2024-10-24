@@ -9,17 +9,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@Setter
-@Getter
+
 public class Inventory {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
+    private int id;
     private String productName;
     private int stock;
 
     // Getters and Setters
+
+    public int getId() {
+        return id;
+    }
+
+
 }
