@@ -4,6 +4,11 @@ package org.example;
 public class Calculator {
 
     CalMultiply calMultiply = new CalMultiply();
+
+    public Calculator(CalMultiply calMultiply) {
+        this.calMultiply = calMultiply;
+    }
+
     public int add(int a, int b) {
         return a + b;
     }
@@ -14,7 +19,7 @@ public class Calculator {
 
     public int multiply(int a, int b) {
         return calMultiply.multiply(a,b); //it is using a 3rd party service so better not to use or may be it iwll not be available in some case so we can use a proxy for that service: MOCKITO
-        
+
     }
 
     public int divide(int a, int b) {
