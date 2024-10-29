@@ -2,7 +2,15 @@ package org.example;
 
 public class CalMultiply {
 
-    public int multiply(int a, int b){
-        return a * b;
+    public static void a(String[] args) {
+
+        int a = 5;
+        int b = 0;
+
+        int div = a / b;
+
+        System.out.println(div);
     }
+
+
 }
